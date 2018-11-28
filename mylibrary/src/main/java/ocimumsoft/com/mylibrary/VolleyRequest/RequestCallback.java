@@ -1,6 +1,6 @@
 package ocimumsoft.com.mylibrary.VolleyRequest;
 
 
-public interface VolleyCallback {
+public interface RequestCallback {
     void onResponse(String result);
 }

@@ -16,14 +16,13 @@ import java.util.Objects;
 
 import ocimumsoft.com.mylibrary.R;
 
-public class VolleyApiClient {
+public class RequestClient {
     private Context context;
     private RequestQueue mRequestQueue;
-    ProgressDialog progress;
+    private ProgressDialog progress;
 
-    public VolleyApiClient(Context context) {
+    public RequestClient(Context context) {
         // mRequestQueue = Volley.newRequestQueue(context.getApplicationContext());
-        //other stuf if you need
         this.context = context;
         progress = ProgressDialog.show(context, null, null, true);
         progress.setContentView(R.layout.layout_progressdialog);
@@ -32,7 +31,7 @@ public class VolleyApiClient {
         progress.show();
     }
 
-    public void VolleyStringRequest(final String TAG, String Url, final VolleyCallback callback) {
+    public void GetStringRequest(final String TAG, String Url, final RequestCallback callback) {
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Url,
                 new Response.Listener<String>() {
@@ -57,7 +56,7 @@ public class VolleyApiClient {
         VolleySingleton.getInstance(context).addToRequestQueue(stringRequest, TAG);
     }
 
-    public void VolleyStringRequest(final String TAG, String Url, final Map<String, String> paramsss, final VolleyCallback callback) {
+    public void PostStringRequest(final String TAG, String Url, final Map<String, String> paramsss, final RequestCallback callback) {
         StringRequest postRequest = new StringRequest(Request.Method.POST, Url,
                 new Response.Listener<String>() {
                     @Override
